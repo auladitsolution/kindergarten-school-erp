@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #FFFDF7;
+    --foreground: #1F2937;
+    --primary: #7C3AED;
+    --primary-foreground: #FFFFFF;
+    --secondary: #38BDF8;
+    --secondary-foreground: #FFFFFF;
+    --accent-yellow: #FACC15;
+    --accent-pink: #FB7185;
+    --accent-green: #34D399;
+    --accent-orange: #FB923C;
+    --card: #FFFFFF;
+    --card-foreground: #1F2937;
+    --border: #E5E7EB;
+    --muted: #F3F4F6;
+    --muted-foreground: #6B7280;
+    --radius: 1rem;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom playful pattern backgrounds */
+.bg-playful-dots {
+  background-image: radial-gradient(#E2E8F0 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.bg-playful-mesh {
+  background: radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.08) 0px, transparent 50%),
+              radial-gradient(at 100% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+              radial-gradient(at 100% 100%, rgba(251, 113, 133, 0.08) 0px, transparent 50%),
+              radial-gradient(at 0% 100%, rgba(250, 204, 21, 0.1) 0px, transparent 50%),
+              #FFFDF7;
+}
+
+.bg-hero-glow {
+  background: radial-gradient(circle at 50% 20%, rgba(124, 58, 237, 0.15), transparent 70%);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 4s ease-in-out infinite;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Print Styles for A4 ID Cards, Invoices & Report Cards */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .page-break {
+    page-break-before: always;
+  }
 }
