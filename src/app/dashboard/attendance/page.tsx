@@ -233,8 +233,8 @@ export default function AttendancePage() {
 
       {/* Attendance Sheet Table */}
       <Card className="rounded-3xl border border-slate-100 bg-white shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-700">
+        <div className="overflow-x-auto table-responsive">
+          <table className="w-full text-left text-xs text-slate-700 min-w-[650px]">
             <thead className="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase tracking-wider font-extrabold text-[11px]">
               <tr>
                 <th className="py-4 px-6">{isBn ? "রোল" : "Roll"}</th>

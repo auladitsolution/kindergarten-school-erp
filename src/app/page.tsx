@@ -234,8 +234,8 @@ export default function HomePage() {
               </div>
 
               {/* Right Column: Hero Visual Card with playful badges */}
-              <div className="lg:col-span-5 relative flex justify-center">
-                <div className="relative w-full max-w-md">
+              <div className="lg:col-span-5 relative flex justify-center w-full max-w-full overflow-hidden sm:overflow-visible">
+                <div className="relative w-full max-w-md mx-auto">
                   {/* Decorative circle glow */}
                   <div className="absolute -inset-4 bg-gradient-to-r from-purple-400 via-sky-300 to-amber-300 rounded-3xl blur-2xl opacity-40 animate-pulse-slow"></div>
 
@@ -244,50 +244,50 @@ export default function HomePage() {
                     <img
                       src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&auto=format&fit=crop&q=80"
                       alt="Kindergarten children joyful learning"
-                      className="w-full h-80 sm:h-96 object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-72 sm:h-96 object-cover hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="p-6 bg-gradient-to-t from-white via-white/95 to-transparent">
+                    <div className="p-5 sm:p-6 bg-gradient-to-t from-white via-white/95 to-transparent">
                       <div className="flex items-center justify-between">
                         <div>
-                          <h4 className="font-bold text-slate-900 text-lg">
+                          <h4 className="font-bold text-slate-900 text-base sm:text-lg">
                             {isBn ? "নিরাপদ ও ভালোবাসাময় পরিবেশ" : "Joyful & Loving Atmosphere"}
                           </h4>
                           <p className="text-xs text-slate-500">
                             {isBn ? "দক্ষ ও সার্টিফাইড শিক্ষকদের নিবিড় পরিচর্যা" : "Certified Early Childhood Mentors"}
                           </p>
                         </div>
-                        <span className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
-                          <Star className="w-6 h-6 fill-amber-400 text-amber-400" />
+                        <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold shrink-0 ml-2">
+                          <Star className="w-5 h-5 sm:w-6 sm:h-6 fill-amber-400 text-amber-400" />
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Floating floating badge 1 */}
-                  <div className="absolute -bottom-5 -left-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-purple-100 flex items-center gap-3 animate-float">
-                    <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold">
-                      <Shield className="w-5 h-5" />
+                  {/* Floating badge 1 */}
+                  <div className="absolute -bottom-3 left-2 sm:-bottom-5 sm:-left-4 bg-white/95 backdrop-blur-md px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl shadow-xl border border-purple-100 flex items-center gap-2.5 sm:gap-3 animate-float max-w-[85%] sm:max-w-none">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold shrink-0">
+                      <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-800">
+                      <p className="text-[11px] sm:text-xs font-bold text-slate-800">
                         {isBn ? "২৪/৭ সিসিটিভি নিরাপত্তা" : "24/7 CCTV Safe"}
                       </p>
-                      <p className="text-[10px] text-slate-500">
+                      <p className="text-[9px] sm:text-[10px] text-slate-500">
                         {isBn ? "অভিভাবকদের আস্থার প্রতীক" : "Child-First Security"}
                       </p>
                     </div>
                   </div>
 
                   {/* Floating badge 2 */}
-                  <div className="absolute -top-4 -right-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-rose-100 flex items-center gap-3 animate-float-delayed">
-                    <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold">
-                      <Heart className="w-5 h-5 fill-rose-500 text-rose-500" />
+                  <div className="absolute -top-3 right-2 sm:-top-4 sm:-right-4 bg-white/95 backdrop-blur-md px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl shadow-xl border border-rose-100 flex items-center gap-2.5 sm:gap-3 animate-float-delayed max-w-[85%] sm:max-w-none">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold shrink-0">
+                      <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-rose-500 text-rose-500" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-800">
+                      <p className="text-[11px] sm:text-xs font-bold text-slate-800">
                         {isBn ? "১০০% শিশুবান্ধব" : "100% Child-Friendly"}
                       </p>
-                      <p className="text-[10px] text-slate-500">
+                      <p className="text-[9px] sm:text-[10px] text-slate-500">
                         {isBn ? "খেলার ছলে হাতেখড়ি" : "Play & Learn"}
                       </p>
                     </div>

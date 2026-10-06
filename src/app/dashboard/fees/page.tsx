@@ -306,8 +306,8 @@ export default function FeesManagementPage() {
 
       {/* Invoices Table */}
       <Card className="rounded-3xl border border-slate-100 bg-white shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-700">
+        <div className="overflow-x-auto table-responsive">
+          <table className="w-full text-left text-xs text-slate-700 min-w-[720px]">
             <thead className="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase tracking-wider font-extrabold text-[11px]">
               <tr>
                 <th className="py-4 px-6">{isBn ? "ইনভয়েস নং" : "Invoice No"}</th>
@@ -373,8 +373,8 @@ export default function FeesManagementPage() {
 
       {/* MODAL 1: RECORD PAYMENT */}
       {activePaymentInvoice && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="relative w-full max-w-md bg-white rounded-3xl p-6 shadow-2xl space-y-5">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="relative w-full max-w-md bg-white rounded-3xl p-5 sm:p-6 shadow-2xl space-y-5 my-auto max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <h3 className="text-lg font-black text-slate-900">
                 {isBn ? "পেমেন্ট রেকর্ড করুন" : "Record Fee Payment"}
@@ -450,8 +450,8 @@ export default function FeesManagementPage() {
 
       {/* MODAL 2: PRINTABLE MONEY RECEIPT / CHALLAN */}
       {activeReceiptInvoice && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-4">
-          <div className="relative w-full max-w-lg bg-white rounded-3xl p-8 shadow-2xl space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="relative w-full max-w-lg bg-white rounded-3xl p-5 sm:p-8 shadow-2xl space-y-6 my-auto max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between no-print">
               <h3 className="font-extrabold text-slate-900 text-lg">
                 {isBn ? "ফি আদায় ডিজিটাল রসিদ" : "Official Fee Receipt"}
@@ -499,7 +499,7 @@ export default function FeesManagementPage() {
               </div>
 
               {/* Items Breakdown */}
-              <div className="border border-slate-200 rounded-xl overflow-hidden">
+              <div className="border border-slate-200 rounded-xl overflow-hidden table-responsive">
                 <table className="w-full text-xs">
                   <thead className="bg-slate-50 border-b border-slate-200 font-bold">
                     <tr>
@@ -562,6 +562,126 @@ export default function FeesManagementPage() {
                 <span>{isBn ? "রসিদ প্রিন্ট করুন" : "Print Receipt"}</span>
               </Button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL 3: CREATE NEW INVOICE */}
+      {isNewInvoiceOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="relative w-full max-w-lg bg-white rounded-3xl p-5 sm:p-8 shadow-2xl space-y-5 my-auto max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h3 className="text-lg font-black text-slate-900">
+                {isBn ? "নতুন ফি ইনভয়েস তৈরি করুন" : "Generate Fee Invoice"}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setIsNewInvoiceOpen(false)}
+                className="p-1.5 rounded-xl text-slate-400 hover:bg-slate-100"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateInvoice} className="space-y-4 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">{isBn ? "শিক্ষার্থী আইডি *" : "Student ID *"}</label>
+                  <Input
+                    required
+                    value={newInvoiceData.studentId}
+                    onChange={(e) => setNewInvoiceData({ ...newInvoiceData, studentId: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">{isBn ? "শিক্ষার্থীর নাম *" : "Student Name *"}</label>
+                  <Input
+                    required
+                    value={newInvoiceData.studentName}
+                    onChange={(e) => setNewInvoiceData({ ...newInvoiceData, studentName: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">{isBn ? "শ্রেণি *" : "Class *"}</label>
+                  <select
+                    value={newInvoiceData.className}
+                    onChange={(e) => setNewInvoiceData({ ...newInvoiceData, className: e.target.value })}
+                    className="w-full h-11 rounded-2xl border border-slate-200 px-3 text-xs font-semibold"
+                  >
+                    <option value="Play Group">Play Group</option>
+                    <option value="Nursery">Nursery</option>
+                    <option value="KG">KG</option>
+                    <option value="Class 1">Class 1</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">{isBn ? "মাস *" : "Month *"}</label>
+                  <Input
+                    required
+                    value={newInvoiceData.month}
+                    onChange={(e) => setNewInvoiceData({ ...newInvoiceData, month: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">{isBn ? "পরিশোধের শেষ তারিখ *" : "Due Date *"}</label>
+                  <Input
+                    type="date"
+                    required
+                    value={newInvoiceData.dueDate}
+                    onChange={(e) => setNewInvoiceData({ ...newInvoiceData, dueDate: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-100">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">{isBn ? "মাসিক বেতন (টাকা) *" : "Tuition Fee *"}</label>
+                  <Input
+                    type="number"
+                    required
+                    value={newInvoiceData.tuitionFee}
+                    onChange={(e) => setNewInvoiceData({ ...newInvoiceData, tuitionFee: Number(e.target.value) })}
+                  />
+                </div>
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">{isBn ? "পরিবহন ফি" : "Transport Fee"}</label>
+                  <Input
+                    type="number"
+                    value={newInvoiceData.transportFee}
+                    onChange={(e) => setNewInvoiceData({ ...newInvoiceData, transportFee: Number(e.target.value) })}
+                  />
+                </div>
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">{isBn ? "অ্যাক্টিভিটি / খাবার" : "Activity / Snacks"}</label>
+                  <Input
+                    type="number"
+                    value={newInvoiceData.activityFee}
+                    onChange={(e) => setNewInvoiceData({ ...newInvoiceData, activityFee: Number(e.target.value) })}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">{isBn ? "স্কলারশিপ / ছাড় (টাকা)" : "Discount / Waiver"}</label>
+                <Input
+                  type="number"
+                  value={newInvoiceData.discount}
+                  onChange={(e) => setNewInvoiceData({ ...newInvoiceData, discount: Number(e.target.value) })}
+                />
+              </div>
+
+              <div className="flex justify-end gap-2 pt-3 border-t border-slate-100">
+                <Button type="button" variant="outline" onClick={() => setIsNewInvoiceOpen(false)}>
+                  {isBn ? "বাতিল" : "Cancel"}
+                </Button>
+                <Button type="submit" variant="default" className="bg-purple-600 hover:bg-purple-700">
+                  {isBn ? "ইনভয়েস তৈরি করুন" : "Generate Invoice"}
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       )}

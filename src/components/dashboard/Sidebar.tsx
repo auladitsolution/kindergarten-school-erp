@@ -26,12 +26,23 @@ import {
   X,
 } from "lucide-react";
 
-export function DashboardSidebar() {
+interface DashboardSidebarProps {
+  mobileOpen?: boolean;
+  setMobileOpen?: (open: boolean) => void;
+}
+
+export function DashboardSidebar({
+  mobileOpen: controlledMobileOpen,
+  setMobileOpen: controlledSetMobileOpen,
+}: DashboardSidebarProps = {}) {
   const pathname = usePathname();
   const { user, logout } = useAuth();
   const { isBn } = useLanguage();
   const [collapsed, setCollapsed] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [localMobileOpen, setLocalMobileOpen] = useState(false);
+
+  const isMobileOpen = controlledMobileOpen !== undefined ? controlledMobileOpen : localMobileOpen;
+  const setIsMobileOpen = controlledSetMobileOpen || setLocalMobileOpen;
 
   const menuItems = [
     {
@@ -108,41 +119,30 @@ export function DashboardSidebar() {
 
   return (
     <>
-      {/* Mobile Trigger Header */}
-      <div className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-purple-100 sticky top-0 z-40">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold">
-            <GraduationCap className="w-5 h-5" />
-          </div>
-          <span className="font-extrabold text-slate-900 text-sm">
-            {isBn ? "ব্লুম ইআরপি" : "Bloom ERP"}
-          </span>
-        </div>
-        <button
-          type="button"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-2 rounded-xl text-slate-700 hover:bg-slate-100"
-        >
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
+      {/* Mobile Backdrop */}
+      {isMobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 lg:hidden transition-opacity"
+          onClick={() => setIsMobileOpen(false)}
+        />
+      )}
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 bg-white border-r border-purple-100/80 transition-all duration-300 flex flex-col justify-between shadow-sm ${
-          collapsed ? "w-20" : "w-64"
-        } ${mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
+        className={`fixed inset-y-0 left-0 z-50 bg-white border-r border-purple-100/80 transition-all duration-300 flex flex-col justify-between shadow-2xl lg:shadow-xs ${
+          collapsed ? "w-20" : "w-64 max-w-[85vw]"
+        } ${isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
       >
         {/* Top Header */}
         <div>
-          <div className="h-20 flex items-center justify-between px-5 border-b border-slate-100">
+          <div className="h-16 lg:h-20 flex items-center justify-between px-4 lg:px-5 border-b border-slate-100">
             <Link href="/" className="flex items-center gap-3 overflow-hidden">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-sky-400 text-white flex items-center justify-center shrink-0 shadow-md shadow-purple-200">
-                <GraduationCap className="w-6 h-6" />
+              <div className="w-9 h-9 lg:w-10 lg:h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-sky-400 text-white flex items-center justify-center shrink-0 shadow-md shadow-purple-200">
+                <GraduationCap className="w-5 h-5 lg:w-6 lg:h-6" />
               </div>
               {!collapsed && (
-                <div className="leading-tight">
-                  <span className="font-black text-slate-900 text-base block">
+                <div className="leading-tight truncate">
+                  <span className="font-black text-slate-900 text-sm lg:text-base block truncate">
                     {isBn ? "ব্লুম ইআরপি" : "Bloom ERP"}
                   </span>
                   <span className="text-[10px] text-purple-600 font-bold uppercase tracking-wider block">
@@ -152,13 +152,22 @@ export function DashboardSidebar() {
               )}
             </Link>
 
-            <button
-              type="button"
-              onClick={() => setCollapsed(!collapsed)}
-              className="hidden lg:flex w-7 h-7 rounded-lg bg-slate-100 text-slate-500 hover:bg-purple-100 hover:text-purple-700 items-center justify-center"
-            >
-              {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => setCollapsed(!collapsed)}
+                className="hidden lg:flex w-7 h-7 rounded-lg bg-slate-100 text-slate-500 hover:bg-purple-100 hover:text-purple-700 items-center justify-center"
+              >
+                {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsMobileOpen(false)}
+                className="lg:hidden p-1.5 rounded-lg text-slate-500 hover:bg-slate-100"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
           {/* Navigation Links */}
@@ -170,7 +179,7 @@ export function DashboardSidebar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => setIsMobileOpen(false)}
                   className={`flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
                     isActive
                       ? "bg-purple-600 text-white shadow-md shadow-purple-200"

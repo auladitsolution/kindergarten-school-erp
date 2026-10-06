@@ -26,13 +26,38 @@
     --radius: 1rem;
   }
 
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-siliguri), var(--font-jakarta), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
+    min-height: 100vh;
   }
+
+  /* Prevent iOS Safari zooming when focusing inputs on small screens */
+  @media (max-width: 640px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+  }
+}
+
+/* Touch-friendly table scroll helper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Custom playful pattern backgrounds */

@@ -115,8 +115,8 @@ export default function ExaminationsPage() {
 
       {/* Results Table */}
       <Card className="rounded-3xl border border-slate-100 bg-white shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-700">
+        <div className="overflow-x-auto table-responsive">
+          <table className="w-full text-left text-xs text-slate-700 min-w-[700px]">
             <thead className="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase tracking-wider font-extrabold text-[11px]">
               <tr>
                 <th className="py-4 px-6">{isBn ? "রোল ও শিক্ষার্থী" : "Roll & Student"}</th>
@@ -164,8 +164,8 @@ export default function ExaminationsPage() {
 
       {/* PRINTABLE PROGRESS REPORT CARD MODAL */}
       {activeReportStudent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl bg-white rounded-3xl p-5 sm:p-8 shadow-2xl space-y-6 my-auto max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between no-print">
               <h3 className="font-extrabold text-slate-900 text-lg">
                 {isBn ? "শিক্ষার্থী মূল্যায়ন প্রগ্রেস কার্ড" : "Student Progress Report Card"}
@@ -180,7 +180,7 @@ export default function ExaminationsPage() {
             </div>
 
             {/* THE REPORT CARD ITSELF */}
-            <div className="rounded-3xl border-4 border-purple-500 bg-white p-6 sm:p-8 space-y-6 text-slate-900 relative">
+            <div className="rounded-3xl border-4 border-purple-500 bg-white p-5 sm:p-8 space-y-6 text-slate-900 relative">
               {/* Header */}
               <div className="text-center pb-4 border-b-2 border-purple-200 space-y-1">
                 <div className="w-12 h-12 rounded-2xl bg-purple-600 text-white flex items-center justify-center mx-auto shadow-md">
@@ -222,26 +222,28 @@ export default function ExaminationsPage() {
                 <h5 className="font-black text-xs uppercase tracking-wider text-slate-500 mb-2">
                   Academic Subject Evaluations
                 </h5>
-                <table className="w-full text-xs border border-slate-200 rounded-xl overflow-hidden">
-                  <thead className="bg-purple-50 text-purple-950 font-bold">
-                    <tr>
-                      <th className="p-2.5 text-left">Subject</th>
-                      <th className="p-2.5 text-center">Marks Obtained</th>
-                      <th className="p-2.5 text-center">Highest</th>
-                      <th className="p-2.5 text-center">Grade</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {activeReportStudent.subjects.map((sub, idx) => (
-                      <tr key={idx}>
-                        <td className="p-2.5 font-bold text-slate-800">{sub.name}</td>
-                        <td className="p-2.5 text-center font-extrabold text-purple-700">{sub.marks}</td>
-                        <td className="p-2.5 text-center text-slate-500">{sub.highest}</td>
-                        <td className="p-2.5 text-center font-black">{sub.grade}</td>
+                <div className="overflow-x-auto table-responsive">
+                  <table className="w-full text-xs border border-slate-200 rounded-xl overflow-hidden min-w-[460px]">
+                    <thead className="bg-purple-50 text-purple-950 font-bold">
+                      <tr>
+                        <th className="p-2.5 text-left">Subject</th>
+                        <th className="p-2.5 text-center">Marks Obtained</th>
+                        <th className="p-2.5 text-center">Highest</th>
+                        <th className="p-2.5 text-center">Grade</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {activeReportStudent.subjects.map((sub, idx) => (
+                        <tr key={idx}>
+                          <td className="p-2.5 font-bold text-slate-800">{sub.name}</td>
+                          <td className="p-2.5 text-center font-extrabold text-purple-700">{sub.marks}</td>
+                          <td className="p-2.5 text-center text-slate-500">{sub.highest}</td>
+                          <td className="p-2.5 text-center font-black">{sub.grade}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               {/* Kindergarten Developmental Skill Ratings */}

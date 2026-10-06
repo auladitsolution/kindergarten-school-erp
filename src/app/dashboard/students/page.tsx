@@ -236,8 +236,8 @@ export default function StudentsPage() {
 
       {/* Students Table */}
       <Card className="rounded-3xl border border-slate-100 bg-white shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-700">
+        <div className="overflow-x-auto table-responsive">
+          <table className="w-full text-left text-xs text-slate-700 min-w-[720px]">
             <thead className="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase tracking-wider font-extrabold text-[11px]">
               <tr>
                 <th className="py-4 px-6">{isBn ? "শিক্ষার্থী ও আইডি" : "Student & ID"}</th>
@@ -312,8 +312,8 @@ export default function StudentsPage() {
 
       {/* MODAL 1: ADD NEW STUDENT */}
       {isAddOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-8 shadow-2xl my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl bg-white rounded-3xl p-5 sm:p-8 shadow-2xl my-auto max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
               <div className="flex items-center gap-2.5">
                 <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
@@ -451,8 +451,8 @@ export default function StudentsPage() {
 
       {/* MODAL 2: PRINTABLE STUDENT ID CARD */}
       {activeCardStudent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-4">
-          <div className="relative w-full max-w-md bg-white rounded-3xl p-6 shadow-2xl space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="relative w-full max-w-md bg-white rounded-3xl p-5 sm:p-6 shadow-2xl space-y-6 my-auto max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between no-print">
               <h3 className="font-extrabold text-slate-900 text-lg">
                 {isBn ? "ডিজিটাল আইডি কার্ড" : "Digital Student ID Card"}

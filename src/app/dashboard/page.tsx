@@ -180,7 +180,7 @@ export default function DashboardOverviewPage() {
       {/* Analytics Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Chart 1: Attendance by Class */}
-        <Card className="lg:col-span-7 p-6 rounded-3xl border border-slate-100 bg-white shadow-sm space-y-4">
+        <Card className="lg:col-span-7 p-6 rounded-3xl border border-slate-100 bg-white shadow-sm space-y-4 min-w-0">
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div>
               <CardTitle className="text-base font-extrabold text-slate-900">
@@ -193,7 +193,7 @@ export default function DashboardOverviewPage() {
             <Badge variant="green">{isBn ? "৯৬.৪% গড় উপস্থিতি" : "96.4% Average"}</Badge>
           </div>
 
-          <div className="h-64 w-full pt-2">
+          <div className="h-64 w-full pt-2 min-w-0">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={attendanceData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F1F5F9" />
@@ -209,7 +209,7 @@ export default function DashboardOverviewPage() {
         </Card>
 
         {/* Chart 2: Fee Collection Monthly Trend */}
-        <Card className="lg:col-span-5 p-6 rounded-3xl border border-slate-100 bg-white shadow-sm space-y-4">
+        <Card className="lg:col-span-5 p-6 rounded-3xl border border-slate-100 bg-white shadow-sm space-y-4 min-w-0">
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div>
               <CardTitle className="text-base font-extrabold text-slate-900">
@@ -222,7 +222,7 @@ export default function DashboardOverviewPage() {
             <Badge variant="sky">+8.2%</Badge>
           </div>
 
-          <div className="h-64 w-full pt-2">
+          <div className="h-64 w-full pt-2 min-w-0">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={feeTrendData}>
                 <defs>
@@ -248,7 +248,7 @@ export default function DashboardOverviewPage() {
       {/* Row 3: Pending Admissions & Quick Operational Panels */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Recent Admissions Review */}
-        <Card className="lg:col-span-7 p-6 rounded-3xl border border-slate-100 bg-white shadow-sm space-y-4">
+        <Card className="lg:col-span-7 p-6 rounded-3xl border border-slate-100 bg-white shadow-sm space-y-4 min-w-0">
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div className="flex items-center gap-2.5">
               <UserPlus className="w-5 h-5 text-purple-600" />
@@ -272,7 +272,7 @@ export default function DashboardOverviewPage() {
             {recentAdmissions.map((adm, i) => (
               <div
                 key={i}
-                className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-3 hover:bg-purple-50/50 transition-colors"
+                className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-purple-50/50 transition-colors"
               >
                 <div>
                   <div className="flex items-center gap-2">

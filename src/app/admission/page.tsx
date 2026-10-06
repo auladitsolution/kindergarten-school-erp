@@ -130,11 +130,11 @@ export default function AdmissionPage() {
             </p>
 
             {/* Toggle Tabs */}
-            <div className="inline-flex rounded-2xl bg-white p-1.5 border border-purple-100 shadow-sm mt-4">
+            <div className="flex w-full sm:w-auto sm:inline-flex rounded-2xl bg-white p-1.5 border border-purple-100 shadow-sm mt-4 max-w-md mx-auto">
               <button
                 type="button"
                 onClick={() => setActiveTab("apply")}
-                className={`px-6 py-2.5 rounded-xl font-bold text-sm transition-all ${
+                className={`flex-1 sm:flex-initial px-3 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-center ${
                   activeTab === "apply"
                     ? "bg-purple-600 text-white shadow-md shadow-purple-200"
                     : "text-slate-600 hover:text-purple-600"
@@ -145,7 +145,7 @@ export default function AdmissionPage() {
               <button
                 type="button"
                 onClick={() => setActiveTab("track")}
-                className={`px-6 py-2.5 rounded-xl font-bold text-sm transition-all ${
+                className={`flex-1 sm:flex-initial px-3 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-center ${
                   activeTab === "track"
                     ? "bg-purple-600 text-white shadow-md shadow-purple-200"
                     : "text-slate-600 hover:text-purple-600"

@@ -41,32 +41,32 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-purple-100/60 bg-white/90 backdrop-blur-md transition-all">
       {/* Top Banner Notice */}
-      <div className="bg-gradient-to-r from-purple-600 via-sky-500 to-rose-500 py-1.5 px-4 text-center text-xs font-semibold text-white flex items-center justify-center gap-2">
-        <Sparkles className="w-3.5 h-3.5 animate-spin" />
-        <span>
+      <div className="bg-gradient-to-r from-purple-600 via-sky-500 to-rose-500 py-1.5 px-3 sm:px-4 text-center text-[11px] sm:text-xs font-semibold text-white flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
+        <Sparkles className="w-3.5 h-3.5 animate-spin shrink-0" />
+        <span className="truncate sm:overflow-visible">
           {locale === "bn"
             ? "🌟 ২০২৬ শিক্ষাবর্ষের প্লে গ্রুপ ও নার্সারিতে অনলাইনে ভর্তি আবেদন চলছে!"
             : "🌟 Admissions Open for Session 2026! Play Group & Nursery Seats are Filling Fast."}
         </span>
         <Link
           href="/admission"
-          className="ml-2 inline-block rounded-full bg-white/20 px-2.5 py-0.5 text-[11px] font-bold text-white hover:bg-white/30 underline"
+          className="inline-block rounded-full bg-white/20 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold text-white hover:bg-white/30 underline shrink-0"
         >
           {locale === "bn" ? "আবেদন করুন →" : "Apply Now →"}
         </Link>
       </div>
 
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-6 lg:px-8 h-16 sm:h-20">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-sky-400 flex items-center justify-center text-white shadow-md shadow-purple-200 group-hover:scale-105 transition-transform">
-            <GraduationCap className="w-7 h-7" />
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-sky-400 flex items-center justify-center text-white shadow-md shadow-purple-200 group-hover:scale-105 transition-transform shrink-0">
+            <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7" />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-purple-700 via-sky-600 to-rose-600 bg-clip-text text-transparent">
+            <span className="text-base sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-purple-700 via-sky-600 to-rose-600 bg-clip-text text-transparent">
               {locale === "bn" ? "ব্লুম কিন্ডারগার্টেন" : "Bloom Kindergarten"}
             </span>
-            <span className="text-[11px] font-semibold text-slate-500 tracking-wider">
+            <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 tracking-wider">
               {locale === "bn" ? "আনন্দময় ও আধুনিক শিক্ষাঙ্গন" : "Junior Academy & Daycare"}
             </span>
           </div>
@@ -112,7 +112,7 @@ export function Navbar() {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-1 sm:gap-2">
           <LanguageToggle />
           <button
             type="button"
@@ -127,14 +127,14 @@ export function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-purple-100 bg-white/95 px-4 pt-3 pb-6 shadow-xl space-y-2">
+        <div className="lg:hidden border-t border-purple-100 bg-white/95 px-4 pt-3 pb-6 shadow-xl space-y-2 max-h-[calc(100vh-80px)] overflow-y-auto">
           <div className="grid grid-cols-2 gap-2 pb-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`px-3 py-2 rounded-xl text-sm font-semibold transition-colors ${
+                className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${
                   pathname === link.href
                     ? "bg-purple-100 text-purple-700"
                     : "text-slate-700 hover:bg-purple-50"
