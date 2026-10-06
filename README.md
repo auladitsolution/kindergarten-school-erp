@@ -120,40 +120,6 @@ git clone <repo-url>
 cd kindergarten-school
 npm install
 ```
-
-### 3. Environment Variables Configuration
-Copy `.env.example` to `.env.local`:
-```bash
-cp .env.example .env.local
-```
-
-Populate the required credentials in `.env.local`:
-```env
-# MongoDB Atlas
-MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.mongodb.net/kindergarten_erp?retryWrites=true&w=majority"
-
-# Firebase Client
-NEXT_PUBLIC_FIREBASE_API_KEY="AIzaSy..."
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="your-app.firebaseapp.com"
-NEXT_PUBLIC_FIREBASE_PROJECT_ID="your-app"
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="your-app.appspot.com"
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="123456789012"
-NEXT_PUBLIC_FIREBASE_APP_ID="1:123456789012:web:..."
-
-# Firebase Admin SDK (Server-Side)
-FIREBASE_PROJECT_ID="your-app"
-FIREBASE_CLIENT_EMAIL="firebase-adminsdk@your-app.iam.gserviceaccount.com"
-FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
-
-# Cloudinary
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="your-cloud-name"
-CLOUDINARY_API_KEY="your-api-key"
-CLOUDINARY_API_SECRET="your-api-secret"
-
-# Demo Mode
-NEXT_PUBLIC_DEMO_MODE="true"
-```
-
 > **Note**: In development mode with `NEXT_PUBLIC_DEMO_MODE="true"`, you can test all features and role switchers immediately out-of-the-box.
 
 ### 4. Run Development Server
