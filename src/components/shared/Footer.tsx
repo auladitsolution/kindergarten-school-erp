@@ -202,17 +202,29 @@ export function Footer() {
             © {new Date().getFullYear()}{" "}
             {locale === "bn" ? "ব্লুম কিন্ডারগার্টেন" : "Bloom Kindergarten & Junior Academy"}. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
-            <Link href="/about" className="hover:text-purple-600">
+          <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center sm:justify-end">
+            <Link href="/about" className="hover:text-purple-600 transition-colors">
               {locale === "bn" ? "গভর্নিং বডি" : "Governing Body"}
             </Link>
             <span>•</span>
-            <Link href="/contact" className="hover:text-purple-600">
+            <Link href="/contact" className="hover:text-purple-600 transition-colors">
               {locale === "bn" ? "গোপনীয়তা নীতি" : "Privacy Policy"}
             </Link>
             <span>•</span>
             <span className="flex items-center gap-1 text-slate-600">
               Made with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> for joyful children
+            </span>
+            <span>•</span>
+            <span className="flex items-center gap-1 text-slate-600">
+              Developed by{" "}
+              <a
+                href="https://itsolution.auladhossen.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-purple-600 hover:text-purple-800 hover:underline underline-offset-2 transition-all duration-200"
+              >
+                Aulad IT Solution
+              </a>
             </span>
           </div>
         </div>
