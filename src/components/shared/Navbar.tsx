@@ -93,31 +93,28 @@ export function Navbar() {
         </nav>
 
         {/* Right Action Buttons */}
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <LanguageToggle />
 
-          <Link href="/admission">
-            <Button variant="pink" size="sm" className="hidden xl:inline-flex gap-1.5 shadow-rose-100">
+          <Link href="/admission" className="hidden xl:inline-flex">
+            <Button variant="pink" size="sm" className="gap-1.5 shadow-rose-100">
               <Heart className="w-4 h-4 fill-white" />
               {t.nav.applyNow}
             </Button>
           </Link>
 
-          <Link href="/login">
+          <Link href="/login" className="hidden sm:inline-flex">
             <Button variant="default" size="sm" className="gap-1.5 shadow-purple-100">
               <LogIn className="w-4 h-4" />
               {t.nav.portalLogin}
             </Button>
           </Link>
-        </div>
 
-        {/* Mobile Menu Button */}
-        <div className="flex lg:hidden items-center gap-1 sm:gap-2">
-          <LanguageToggle />
+          {/* Mobile Menu Hamburger Button */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl text-slate-700 hover:bg-slate-100"
+            className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
