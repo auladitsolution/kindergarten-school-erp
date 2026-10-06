@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-siliguri), var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  --font-siliguri: var(--font-siliguri), sans-serif;
+  --font-bangla: var(--font-siliguri), sans-serif;
+}
+
 @layer base {
   :root {
     --background: #FFFDF7;
@@ -23,6 +29,7 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
+    font-family: var(--font-siliguri), var(--font-jakarta), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
   }

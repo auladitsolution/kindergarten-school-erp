@@ -13,8 +13,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 const siliguri = Hind_Siliguri({
-  subsets: ["bengali"],
-  weight: ["400", "500", "600", "700"],
+  subsets: ["bengali", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-siliguri",
   display: "swap",
 });
@@ -40,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="bn" className={`${jakarta.variable} ${siliguri.variable} antialiased`}>
+    <html lang="bn" className={`${siliguri.variable} ${jakarta.variable} antialiased`}>
       <body className="min-h-screen flex flex-col font-sans bg-[#FFFDF7] text-slate-800">
         <LanguageProvider>
           <AuthProvider>
