@@ -56,31 +56,31 @@ export function Navbar() {
         </Link>
       </div>
 
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-6 lg:px-8 h-16 sm:h-20">
+      <div className="max-w-[1440px] mx-auto flex items-center justify-between px-3 sm:px-6 lg:px-6 xl:px-8 h-16 sm:h-20 gap-2 lg:gap-3">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-sky-400 flex items-center justify-center text-white shadow-md shadow-purple-200 group-hover:scale-105 transition-transform shrink-0">
             <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7" />
           </div>
           <div className="flex flex-col">
-            <span className="text-base sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-purple-700 via-sky-600 to-rose-600 bg-clip-text text-transparent">
+            <span className="text-base sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-purple-700 via-sky-600 to-rose-600 bg-clip-text text-transparent whitespace-nowrap">
               {locale === "bn" ? "ব্লুম কিন্ডারগার্টেন" : "Bloom Kindergarten"}
             </span>
-            <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 tracking-wider">
+            <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 tracking-wider whitespace-nowrap">
               {locale === "bn" ? "আনন্দময় ও আধুনিক শিক্ষাঙ্গন" : "Junior Academy & Daycare"}
             </span>
           </div>
         </Link>
 
         {/* Desktop Nav Items */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 2xl:gap-1.5 shrink-0">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-xl text-sm font-bold transition-colors ${
+                className={`inline-flex items-center justify-center whitespace-nowrap px-2 py-1.5 xl:px-2.5 2xl:px-3 text-xs xl:text-[13px] 2xl:text-sm font-bold rounded-xl transition-colors ${
                   isActive
                     ? "bg-purple-100/70 text-purple-700"
                     : "text-slate-600 hover:text-purple-600 hover:bg-purple-50/50"
@@ -93,18 +93,18 @@ export function Navbar() {
         </nav>
 
         {/* Right Action Buttons */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 xl:gap-3 shrink-0">
           <LanguageToggle />
 
-          <Link href="/admission" className="hidden xl:inline-flex">
-            <Button variant="pink" size="sm" className="gap-1.5 shadow-rose-100">
+          <Link href="/admission" className="hidden 2xl:inline-flex whitespace-nowrap">
+            <Button variant="pink" size="sm" className="gap-1.5 shadow-rose-100 whitespace-nowrap text-xs">
               <Heart className="w-4 h-4 fill-white" />
               {t.nav.applyNow}
             </Button>
           </Link>
 
-          <Link href="/login" className="hidden sm:inline-flex">
-            <Button variant="default" size="sm" className="gap-1.5 shadow-purple-100">
+          <Link href="/login" className="hidden sm:inline-flex whitespace-nowrap">
+            <Button variant="default" size="sm" className="gap-1.5 shadow-purple-100 whitespace-nowrap text-xs">
               <LogIn className="w-4 h-4" />
               {t.nav.portalLogin}
             </Button>
@@ -114,7 +114,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100"
+            className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 shrink-0"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -131,7 +131,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${
+                className={`flex items-center whitespace-nowrap px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${
                   pathname === link.href
                     ? "bg-purple-100 text-purple-700"
                     : "text-slate-700 hover:bg-purple-50"
